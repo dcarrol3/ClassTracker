@@ -18,6 +18,8 @@ public class Canvas extends JPanel {
 	public Canvas(){
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
+		mainPanel.setAlignmentY(LEFT_ALIGNMENT); // Left justify content in panel
+		mainPanel.setAlignmentX(TOP_ALIGNMENT); // Justify in top of the panel
 		super.add(mainPanel);
 	}
 	
@@ -28,6 +30,8 @@ public class Canvas extends JPanel {
 	// Add class to canvas and list
 	SchoolClass addClass(String name){
 		SchoolClass c = new SchoolClass(name);
+		c.setAlignmentY(LEFT_ALIGNMENT); // Left justify content in panel
+		c.setAlignmentX(TOP_ALIGNMENT); // Justify in top of the panel
 		classes.add(c);
 		mainPanel.add(c);
 		// Repaint and refreash gui

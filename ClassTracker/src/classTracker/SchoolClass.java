@@ -26,16 +26,21 @@ public class SchoolClass extends JPanel{
 	ArrayList<Assignment> assignments = new ArrayList<Assignment>();
 	JButton addButton; // Add an assignment
 	JPanel assignPanel = new JPanel();
+	JPanel classNamePanel = new JPanel();
 	private boolean isRemoved; //Keeps track is class is removed or not
 	
 	public SchoolClass(String name){
+		super.setLayout(new GridLayout(0, 2));
 		classNameStr = name;
 		className = new JLabel(name + ":");
 		addButton = new JButton("+");
 		addButton.addActionListener(new AddListener());
 		assignPanel.setLayout(new BoxLayout(assignPanel, BoxLayout.PAGE_AXIS));
-		super.add(className);
-		super.add(addButton);
+		assignPanel.setAlignmentY(RIGHT_ALIGNMENT); // Right justify in panel
+		assignPanel.setAlignmentX(BOTTOM_ALIGNMENT); // Bottom justify
+		super.add(classNamePanel);
+		classNamePanel.add(className);
+		classNamePanel.add(addButton);
 		super.add(assignPanel);
 		isRemoved = false;
 	}
@@ -43,6 +48,15 @@ public class SchoolClass extends JPanel{
 	// Return assignments
 	public ArrayList<Assignment> getAssignments(){
 		return assignments;
+	}
+	
+	public void setClassName(String name){
+		classNameStr = name;
+	}
+	
+	public void setClassNameLabel(String name) {
+		classNameStr = name;
+		className.setText(name);
 	}
 	
 	public String getClassName(){
