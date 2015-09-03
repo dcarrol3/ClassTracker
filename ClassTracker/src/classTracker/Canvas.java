@@ -1,6 +1,7 @@
 package classTracker;
 
 import java.awt.GridLayout;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
@@ -9,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class Canvas extends JPanel {
+public class Canvas extends JPanel{
 	
 	JLabel label1;
 	ArrayList<SchoolClass> classes = new ArrayList<SchoolClass>();
@@ -38,11 +39,18 @@ public class Canvas extends JPanel {
 		this.repaint();
 		SwingUtilities.getWindowAncestor(this).pack();
 		
-		// Save the file
-		if(OpenFile.doneLoading)
-			SaveFile.saveFile(c);
-		
 		return c;
+	}
+	
+	// Add class from file
+	void addClass(SchoolClass c){
+		c.setAlignmentY(LEFT_ALIGNMENT); // Left justify content in panel
+		c.setAlignmentX(TOP_ALIGNMENT); // Justify in top of the panel
+		classes.add(c);
+		mainPanel.add(c);
+		// Repaint and refresh gui
+		this.repaint();
+		SwingUtilities.getWindowAncestor(this).pack();
 	}
 	
 	void clean(){}

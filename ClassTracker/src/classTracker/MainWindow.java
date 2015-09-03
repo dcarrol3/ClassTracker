@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.io.Serializable;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
@@ -26,7 +27,7 @@ public class MainWindow {
 	private JFrame frame;
 	JLabel status;
 	JMenuBar menuBar;
-	static Canvas canvas;
+	public static Canvas canvas;
 	
 	// Getter for screen width
 	public static int getScreenWorkingWidth() {
@@ -54,8 +55,8 @@ public class MainWindow {
 		  new Thread() {
 		    @Override 
 		    public void run() { 
-		      SaveFile.checkForDeleted();
-		      System.out.println("bye");
+		      SaveFile.saveFile();
+		      System.out.println("File Saved!");
 		    }
 		});
 		

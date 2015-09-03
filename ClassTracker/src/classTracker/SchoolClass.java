@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
@@ -19,7 +20,7 @@ import classTracker.AddClass.AddListener;
 import classTracker.AddClass.CancelListener;
 
 // Stores assignments for class
-public class SchoolClass extends JPanel{
+public class SchoolClass extends JPanel implements Serializable{
 	
 	JLabel className; // Name of class
 	String classNameStr; // String version
@@ -77,8 +78,13 @@ public class SchoolClass extends JPanel{
 		assignments.add(assign); // Add to list
 		assignPanel.add(assign);
 		refreshGUI();
-		if(OpenFile.doneLoading)
-			SaveFile.saveFile(this, assign);
+	}
+	
+	// Add from file
+	public void addAssignment(Assignment assign){
+		assignments.add(assign); // Add to list
+		assignPanel.add(assign);
+		refreshGUI();
 	}
 	// Deletes assignment and corrosponding panel
 	void delAssignments(){
